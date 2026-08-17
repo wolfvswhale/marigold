@@ -29,7 +29,13 @@ export default async function Home() {
       <SalonBackdrop />
       <header className="relative z-10 mx-auto max-w-5xl px-6 pt-8 flex items-center justify-between">
         <div className="mg-display text-xl">{shop.name}</div>
-        <Link href="/staff" className="text-sm" style={{ color: 'var(--dim)' }}>
+        {/* This sits over whichever picture is showing, so it carries its own
+            cream background rather than trusting the photo behind it. */}
+        <Link
+          href="/staff"
+          className="text-sm rounded-full px-4 py-2"
+          style={{ color: 'var(--body)', background: 'rgba(251,246,238,.82)' }}
+        >
           Staff sign in
         </Link>
       </header>
