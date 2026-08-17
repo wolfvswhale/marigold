@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
+/* Marigold Studio.
+   Built as the deliberate opposite of Report Desk: that one is dark, cyan,
+   uppercase and gridded because it is a tool people stare at all day. This
+   one is a shop window. Warm paper, a serif with some handwriting in it,
+   lots of air, nothing shouting. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fbf6ee;
+  --paper-2: #f4ece0;
+  --card: #ffffff;
+  --ink: #211d18;
+  --body: #5d5548;
+  --dim: #918776;
+  --line: #e6dbc9;
+  --gold: #c47a20;
+  --gold-soft: #f6e6cd;
+  --sage: #5f7355;
+
+  /* Fixed. A status colour never gets themed and never travels alone;
+     it always sits next to a word. */
+  --ok: #0ca30c;
+  --warn: #fab219;
+  --stop: #d03b3b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html, body { background: var(--paper); color: var(--ink); }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mg-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+/* A soft warm wash instead of the radial glow the dark app uses. */
+.mg-wash {
+  background:
+    radial-gradient(60rem 34rem at 88% -6%, #f7e3c4 0%, rgba(247,227,196,0) 62%),
+    radial-gradient(48rem 30rem at -8% 6%, #efe6d6 0%, rgba(239,230,214,0) 60%);
+}
+
+.mg-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(64,48,24,.04), 0 12px 30px -18px rgba(64,48,24,.28);
+}
+
+.mg-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; height: 3.25rem; padding: 0 1.5rem;
+  border-radius: 999px; background: var(--ink); color: var(--paper);
+  font-weight: 600; font-size: 1rem;
+  transition: transform .15s ease, background .15s ease;
+}
+.mg-btn:hover { background: #000; transform: translateY(-1px); }
+.mg-btn:disabled { opacity: .35; transform: none; cursor: not-allowed; }
+
+.mg-btn-gold { background: var(--gold); color: #fff; }
+.mg-btn-gold:hover { background: #ad6a19; }
+
+.mg-btn-quiet { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.mg-btn-quiet:hover { background: var(--paper-2); }
+
+.mg-input {
+  width: 100%; height: 3.25rem; padding: 0 1rem;
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  color: var(--ink); font-size: 1rem;
+}
+.mg-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
+.mg-input::placeholder { color: var(--dim); }
+
+.mg-label {
+  display: block; margin-bottom: .5rem;
+  font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--dim); font-weight: 600;
+}
+
+/* Time slot chips. The selected state carries a filled background AND a
+   check mark, so it never depends on colour alone. */
+.mg-slot {
+  height: 3rem; border-radius: 12px; border: 1px solid var(--line);
+  background: #fff; color: var(--ink); font-size: .95rem; font-weight: 500;
+  transition: border-color .12s ease, background .12s ease;
+}
+.mg-slot:hover:not(:disabled) { border-color: var(--gold); background: var(--gold-soft); }
+.mg-slot[data-on="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.mg-slot:disabled { opacity: .32; text-decoration: line-through; cursor: not-allowed; }
+
+.mg-rule { height: 1px; background: var(--line); }
+
+.mg-rise { animation: mgRise .5s cubic-bezier(.2,.7,.3,1) both; }
+@keyframes mgRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-rise { animation: none; }
+  .mg-btn:hover { transform: none; }
 }
