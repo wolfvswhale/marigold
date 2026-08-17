@@ -11,7 +11,7 @@ const body = Inter({ subsets: ['latin'], variable: '--font-body' })
 
 export const metadata: Metadata = {
   title: 'Marigold Studio',
-  description: 'Book a chair at Marigold Studio. Cuts, colour, and no rush.',
+  description: 'Book a chair at Marigold Studio. An organic salon. Cuts, color, and no rush.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

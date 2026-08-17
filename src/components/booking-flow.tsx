@@ -226,7 +226,7 @@ export default function BookingFlow({ shop, services, hours }: Props) {
           <div>
             <label className="mg-label" htmlFor="no">Anything we should know?</label>
             <input id="no" className="mg-input" value={note}
-              onChange={(e) => setNote(e.target.value)} placeholder="Growing it out, going shorter…" />
+              onChange={(e) => setNote(e.target.value)} placeholder="Growing it out, going shorter..." />
           </div>
         </div>
 

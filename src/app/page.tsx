@@ -44,7 +44,8 @@ export default async function Home() {
         <p className="text-sm tracking-widest uppercase mb-6" style={{ color: 'var(--gold)' }}>
           {shop.address} &middot; {shop.phone}
         </p>
-        <h1 className="mg-display text-[clamp(2.75rem,8vw,5.5rem)] max-w-3xl">
+        <h1 className="mg-display text-[clamp(2.75rem,8vw,5.5rem)] max-w-3xl"
+            style={{ color: 'var(--headline)' }}>
           Book a chair.
         </h1>
         <p className="mt-6 text-xl max-w-xl leading-relaxed" style={{ color: 'var(--body)' }}>
