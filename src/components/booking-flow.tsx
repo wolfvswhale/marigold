@@ -113,7 +113,7 @@ export default function BookingFlow({ shop, services, hours }: Props) {
   }
 
   return (
-    <section id="book" className="mx-auto max-w-5xl px-6">
+    <section id="book" className="relative z-10 mx-auto max-w-5xl px-6">
       <div className="mg-card p-6 sm:p-10">
 
         <h2 className="mg-display text-3xl mb-8">What are you coming in for?</h2>

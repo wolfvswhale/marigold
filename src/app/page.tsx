@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { serverClient } from '@/lib/supabase/server'
 import { Business, Service, Hours, DAY_NAMES, clock, money } from '@/lib/shop'
 import BookingFlow from '@/components/booking-flow'
+import SalonBackdrop from '@/components/salon-backdrop'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,15 +25,16 @@ export default async function Home() {
   ])
 
   return (
-    <main className="mg-wash min-h-screen">
-      <header className="mx-auto max-w-5xl px-6 pt-8 flex items-center justify-between">
+    <main className="mg-wash min-h-screen relative">
+      <SalonBackdrop />
+      <header className="relative z-10 mx-auto max-w-5xl px-6 pt-8 flex items-center justify-between">
         <div className="mg-display text-xl">{shop.name}</div>
         <Link href="/staff" className="text-sm" style={{ color: 'var(--dim)' }}>
           Staff sign in
         </Link>
       </header>
 
-      <section className="mx-auto max-w-5xl px-6 pt-16 pb-14 mg-rise">
+      <section className="relative z-10 mx-auto max-w-5xl px-6 pt-16 pb-14 mg-rise">
         <p className="text-sm tracking-widest uppercase mb-6" style={{ color: 'var(--gold)' }}>
           {shop.address} &middot; {shop.phone}
         </p>
